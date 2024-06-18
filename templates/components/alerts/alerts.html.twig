@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_title %}Alert demo{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_actions %}{% endblock %}
+
+{% block page_content %}
+
+    {% embed 'components/component_card_demo.html.twig' with {
+        importTpl : "{% from '@Tabler/components/alert.html.twig' import alert %}",
+        fromPathUrl : false,
+        codeTemplates : [
+            "{{ alert({title : 'Title V2', description: 'Description V2', icon : 'warning'}) }}",
+            "{{ alert({title : 'Title V2', description: 'Description V2', icon : 'warning', dismissible : true}) }}",
+            "{{ alert({title : 'Title V2', description: 'Description V2', icon : 'warning', important: true}) }}",
+            "{{ alert({title : 'Title V2', description: 'Description V2', icon : 'warning', important: true, dismissible : true}) }}",
+            "{{ alert({title : 'Title V2', description: 'Description V2', type : 'warning'}) }}",
+            "{{ alert({title : 'Title V2', description: 'Description V2', type : 'warning', dismissible : true}) }}",
+            "{{ alert({title : 'Title V2', type : 'warning'}) }}",
+            "{{ alert({title : 'Title V2', type : 'warning', dismissible : true}) }}",
+            "{{ alert({title : 'Title V2', icon : 'warning', type : 'warning'}) }}",
+            "{{ alert({title : 'Title V2', icon : 'warning', type : 'warning', dismissible : true}) }}",
+            "{{ alert({description : 'Description V2', type : 'success'}) }}",
+            "{{ alert({description : 'Description V2', type : 'success', dismissible : true}) }}",
+            "{{ alert({description : 'Description V2', type : 'success', icon : 'warning'}) }}",
+            "{{ alert({description : 'Description V2', type : 'success', icon : 'warning', dismissible : true}) }}",
+            "{{ alert({type : 'primary'}) }}",
+            "{{ alert({type : 'primary', dismissible : true}) }}",
+        ]
+    } %}
+        {% block box_title %}{{ tabler_icon('about') }} The "alert" macro{% endblock %}
+    {% endembed %}
+
+
+{% endblock %}

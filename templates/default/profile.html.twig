@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_title %}User profile{% endblock %}
+{% block page_pretitle %}Show some details{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-12">
+            {% embed '@Tabler/embeds/card.html.twig' %}
+                {% from "@Tabler/components/avatar.html.twig" import avatar %}
+                {% from "@Tabler/components/badge.html.twig" import badge %}
+                {% from "@Tabler/components/button.html.twig" import button %}
+                {% block box_body_class %}text-center{% endblock %}
+                {% block box_body %}
+                    {{ avatar(app.user)  }}
+
+                    <h3 class="profile-username">{{ user.username }}</h3>
+
+                    <p class="text-muted">
+                        A demo user with the roles
+                        <br>
+                        {% for role in user.roles %}
+                            {{ badge(role) }}
+                        {% endfor %}
+                    </p>
+
+                    {{ button(false , {title : 'Follow'|trans}, 'primary') }}
+                {% endblock %}
+            {% endembed %}
+        </div>
+    </div>
+{% endblock %}
